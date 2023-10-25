@@ -3,7 +3,7 @@ Offline (for the moment) simulator of a simple electonic lab made in java
 
 ### Italian Description
 
-Il simulatore deve mettere a disposizione dell'utente i seguenti componenti dell'elettronica di base:
+Il simulatore mette a disposizione dell'utente i seguenti componenti dell'elettronica di base:
  - fili per il cablaggio            
  - alimentatori (possibilità di correnti continue)
  - voltmetri
@@ -11,7 +11,7 @@ Il simulatore deve mettere a disposizione dell'utente i seguenti componenti dell
  - led
  - oscilloscopio
  - generatore d'onda (quadra,sinusoidale,triangolare)
- - gate logici (and,xor,or ...)
+ - gate logici (AND,OR,XOR ...)
  - bottoni
  - potenziometri
  - semplici motori DC 
@@ -27,17 +27,17 @@ sezione prettamente grafica
 
 
 
-funzionalità 
+Funzionalità 
 + Presenza di menu navigabile graficamente 
 	+ salvataggio di più circuiti 
 	+ esportazione circuito a file  
 	+ visualizzazione progetti salvati 
-+ fallimento dei componenti per parametri fuori specifica (eccessiva corrente)
-+ possibilità di creazione e personalizzazione di semplici componenti integrati (es CD 4011 ) 
++ Fallimento dei componenti per parametri fuori specifica (eccessiva corrente)
++ Possibilità di creazione e personalizzazione di semplici componenti integrati (es CD 4011 ) 
 
 ### English Description
 
-The simulator should provide the user with the following basic electronic components:
+The simulator provides the user with the following basic electronic components:
 
 - Wires for wiring
 - Power supplies (with the possibility of direct current)
@@ -64,9 +64,9 @@ In the graphical section:
 Functionality:
 
 - Navigable graphical menu
-- Saving multiple circuits
-- Exporting circuits to a file
-- Viewing saved projects
+	- Saving multiple circuits
+	- Exporting circuits to a file
+	- Viewing saved projects
 - Component failure for parameters outside specifications (excessive current)
 - Ability to create and customize simple integrated components (e.g., CD 4011).
 
