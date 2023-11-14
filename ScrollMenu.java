@@ -8,6 +8,6 @@ public class ScrollMenu extends JComboBox{
     private JComboBox scrollmenus = new JComboBox(components);
 
     public ScrollMenu(){
-
+        super();
     }
 }
