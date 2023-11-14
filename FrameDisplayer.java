@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.SpringLayout;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
@@ -26,15 +27,20 @@ public class FrameDisplayer extends JFrame{
         private String[] components = {"menù", "resistenza", "alimentatore", "voltmetro", "led"};
         double x;
         double y;
+        private JTabbedPane tabbedPane = new JTabbedPane();
         Dimension scrDimension = Toolkit.getDefaultToolkit().getScreenSize();
+        
+        private JButton button1 = new JButton("Create New Project");
         private JButton button2 = new JButton("Project");
         private JButton button3 = new JButton("Setting");
+
         private JPanel TotalPanel = new JPanel();
         private JPanel TopPanel = new JPanel();
         private JPanel OpenProject = new JPanel();
-        private JPanel panelOption = new JPanel();
+        private JPanel MiddPanel = new JPanel();
         private JPanel ScrollPanel = new JPanel();
         private JPanel WorkingSpace = new JPanel();
+        JComboBox comps = new JComboBox(components);
 
         public FrameDisplayer(String title){
 
@@ -42,25 +48,62 @@ public class FrameDisplayer extends JFrame{
             this.x = scrDimension.getWidth();
             this.y = scrDimension.getHeight();
             setSize((int)x,(int)y);
-            TotalPanel.setLayout(new BorderLayout());
-            TotalPanel.add(TopPanel, BorderLayout.NORTH);
-            TopPanel.setLayout(new BorderLayout());
-            TopPanel.add(panelOption, BorderLayout.WEST);
-            TopPanel.add(OpenProject, BorderLayout.CENTER);
-            OpenProject.setBackground(Color.BLACK);
-            TotalPanel.add(WorkingSpace, BorderLayout.CENTER);
-            WorkingSpace.setBackground(Color.LIGHT_GRAY);
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            ScrollPanel.setBackground(Color.CYAN);
-            TotalPanel.add(ScrollPanel, BorderLayout.WEST);
-            panelOption.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+            //on create new project press this is creating a new tab
+
+            button1.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    CreateNewProject();
+                }
+            });
+
+            //set layout of all panels 
+
+            TotalPanel.setLayout(new BoxLayout(TotalPanel, BoxLayout.Y_AXIS));
+            TopPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+            MiddPanel.setLayout(new BorderLayout());
+            WorkingSpace.setLayout(new BorderLayout());
+
+            //add top panel where is displayed the 3 buttons create new proj option ecc and Midd Panel where is the combobox and the tabs
+
+            TotalPanel.add(TopPanel);
+            TotalPanel.add(MiddPanel);            
+
+            //add buttons in the top panels
+
+            TopPanel.add(button1);
+            TopPanel.add(button2);
+            TopPanel.add(button3);
+
+            //add comps that is the combobox 
+
+            MiddPanel.add(ScrollPanel, BorderLayout.WEST);
+            MiddPanel.add(WorkingSpace, BorderLayout.CENTER);
+            ScrollPanel.add(comps);
+
+            
+            tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+            WorkingSpace.add(tabbedPane, BorderLayout.CENTER);
+            tabbedPane.addTab("Ciao", new JButton("ciao"));
+
+            //add total panel in the frame
             add(TotalPanel);
-            panelOption.add(button2);
-            panelOption.add(button3);
-            ScrollPanel.add(new JComboBox(components));
-            panelOption.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+            
+            OpenProject.setBackground(Color.BLACK);
+            WorkingSpace.setBackground(Color.LIGHT_GRAY);
+            ScrollPanel.setBackground(Color.CYAN);
+            
             setVisible(true);
+            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
            
+        }
+
+        //function that add a new tabs called when button1 (open new Proj) is pressed
+        public void CreateNewProject(){
+            
+            tabbedPane.addTab("Ciao", new JButton("ciao"));
+
         }
       
         
