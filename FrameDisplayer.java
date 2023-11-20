@@ -15,6 +15,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.SpringLayout;
@@ -24,14 +25,14 @@ import javax.swing.border.EmptyBorder;
 
 public class FrameDisplayer extends JFrame{
 
-        private String[] components = {"menù", "resistenza", "alimentatore", "voltmetro", "led"};
+        private String[] components = {"Menu", "Resistance", "Power supply", "voltmeter", "LED"};
         double x;
         double y;
         private JTabbedPane tabbedPane = new JTabbedPane();
         Dimension scrDimension = Toolkit.getDefaultToolkit().getScreenSize();
         
-        private JButton button1 = new JButton("Create New Project");
-        private JButton button2 = new JButton("Project");
+        private JButton button1 = new JButton("New Project");
+        private JButton button2 = new JButton("Saved Projects");
         private JButton button3 = new JButton("Setting");
 
         private JPanel TotalPanel = new JPanel();
@@ -65,18 +66,18 @@ public class FrameDisplayer extends JFrame{
             MiddPanel.setLayout(new BorderLayout());
             WorkingSpace.setLayout(new BorderLayout());
 
-            //add top panel where is displayed the 3 buttons create new proj option ecc and Midd Panel where is the combobox and the tabs
+            //action selection panel (new projects, saved projects, settings)
 
             TotalPanel.add(TopPanel);
             TotalPanel.add(MiddPanel);            
 
-            //add buttons in the top panels
+            //add action buttons in the top panels
 
             TopPanel.add(button1);
             TopPanel.add(button2);
             TopPanel.add(button3);
 
-            //add comps that is the combobox 
+            //add comps (the combobox) 
 
             MiddPanel.add(ScrollPanel, BorderLayout.WEST);
             MiddPanel.add(WorkingSpace, BorderLayout.CENTER);
@@ -85,7 +86,7 @@ public class FrameDisplayer extends JFrame{
             
             tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
             WorkingSpace.add(tabbedPane, BorderLayout.CENTER);
-            tabbedPane.addTab("Ciao", new JButton("ciao"));
+            tabbedPane.addTab("New Project", new JButton("New Project"));
 
             //add total panel in the frame
             add(TotalPanel);
@@ -99,10 +100,13 @@ public class FrameDisplayer extends JFrame{
            
         }
 
-        //function that add a new tabs called when button1 (open new Proj) is pressed
+        //spawn a dialogue interface to insert the project title and adds the project to the tab panel
+
         public void CreateNewProject(){
-            
-            tabbedPane.addTab("Ciao", new JButton("ciao"));
+            String projTitle = (String)JOptionPane.showInputDialog(
+                    "Project title:"
+                    );
+            tabbedPane.addTab(projTitle, new JButton(projTitle));
 
         }
       
