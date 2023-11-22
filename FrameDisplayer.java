@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Insets;
 import java.awt.Paint;
+import java.awt.Panel;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +13,7 @@ import java.util.concurrent.Flow;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -25,7 +27,12 @@ import javax.swing.border.EmptyBorder;
 
 public class FrameDisplayer extends JFrame{
 
-        private String[] components = {"Menu", "Resistance", "Power supply", "voltmeter", "LED"};
+        Object[] comp = {
+
+            new ImageIcon("/home/fred/Desktop/JavaProj/img/led.png"),
+            new ImageIcon("/home/fred/Desktop/JavaProj/img/button.png"),
+            new ImageIcon("/home/fred/Desktop/JavaProj/img/resistor.png")
+        };
         double x;
         double y;
         private JTabbedPane tabbedPane = new JTabbedPane();
@@ -41,7 +48,7 @@ public class FrameDisplayer extends JFrame{
         private JPanel MiddPanel = new JPanel();
         private JPanel ScrollPanel = new JPanel();
         private JPanel WorkingSpace = new JPanel();
-        JComboBox comps = new JComboBox(components);
+        JComboBox comps = new JComboBox(comp);
 
         public FrameDisplayer(String title){
 
@@ -86,7 +93,7 @@ public class FrameDisplayer extends JFrame{
             
             tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
             WorkingSpace.add(tabbedPane, BorderLayout.CENTER);
-            tabbedPane.addTab("New Project", new JButton("New Project"));
+            tabbedPane.addTab("New Project", new JPanel());
 
             //add total panel in the frame
             add(TotalPanel);
@@ -106,7 +113,7 @@ public class FrameDisplayer extends JFrame{
             String projTitle = (String)JOptionPane.showInputDialog(
                     "Project title:"
                     );
-            tabbedPane.addTab(projTitle, new JButton(projTitle));
+            tabbedPane.addTab(projTitle, new JPanel());
 
         }
       
