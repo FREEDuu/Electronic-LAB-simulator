@@ -29,9 +29,9 @@ public class FrameDisplayer extends JFrame{
 
         Object[] comp = {
 
-            new ImageIcon("/home/fred/Desktop/JavaProj/img/led.png"),
-            new ImageIcon("/home/fred/Desktop/JavaProj/img/button.png"),
-            new ImageIcon("/home/fred/Desktop/JavaProj/img/resistor.png")
+            new ImageIcon("/home/fred/Desktop/JavaProj/Electronic-LAB-simulator/img/led.png"),
+            new ImageIcon("/home/fred/Desktop/JavaProj/Electronic-LAB-simulator/img/button.png"),
+            new ImageIcon("/home/fred/Desktop/JavaProj/Electronic-LAB-simulator/img/resistor.png")
         };
         double x;
         double y;
@@ -41,6 +41,9 @@ public class FrameDisplayer extends JFrame{
         private JButton button1 = new JButton("New Project");
         private JButton button2 = new JButton("Saved Projects");
         private JButton button3 = new JButton("Setting");
+        private JButton button4 = new JButton("Delete Project");
+
+
 
         private JPanel TotalPanel = new JPanel();
         private JPanel TopPanel = new JPanel();
@@ -58,11 +61,17 @@ public class FrameDisplayer extends JFrame{
             setSize((int)x,(int)y);
 
             //on create new project press this is creating a new tab
-
+            // #todo implements an inteface correctly 
             button1.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     CreateNewProject();
+                }
+            });
+            
+            button2.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e){
+                    DeleteProject();
                 }
             });
 
@@ -83,6 +92,8 @@ public class FrameDisplayer extends JFrame{
             TopPanel.add(button1);
             TopPanel.add(button2);
             TopPanel.add(button3);
+            TopPanel.add(button4);
+
 
             //add comps (the combobox) 
 
@@ -110,12 +121,12 @@ public class FrameDisplayer extends JFrame{
         //spawn a dialogue interface to insert the project title and adds the project to the tab panel
 
         public void CreateNewProject(){
-            String projTitle = (String)JOptionPane.showInputDialog(
-                    "Project title:"
-                    );
+            String projTitle = (String)JOptionPane.showInputDialog("Project title:");
             tabbedPane.addTab(projTitle, new JPanel());
 
         }
-      
+        public void DeleteProject(){
+            //tabbedPane.removeTabAt();;
+        }
         
 }
