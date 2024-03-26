@@ -70,3 +70,14 @@ Functionality:
 - Component failure for parameters outside specifications (excessive current)
 - Ability to create and customize simple integrated components (e.g., CD 4011).
 
+
+
+
+#TODO
+- LUCA :
+- implementare bottone delete e settings
+- implementare schermata iniziale (entra nel laboratorio/ progetti salvati/ esci)
+
+- FRANCESCO
+- aggiungere componenti (divisi per macrocategorie)
+- implementare il drag 'n drop
