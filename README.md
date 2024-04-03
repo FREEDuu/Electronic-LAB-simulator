@@ -79,5 +79,5 @@ Functionality:
 - implementare schermata iniziale (entra nel laboratorio/ progetti salvati/ esci)
 
 - FRANCESCO
-- aggiungere componenti (divisi per macrocategorie)
-- implementare il drag 'n drop
+- aggiungere componenti (divisi per macrocategorie) # FATTO
+- implementare il drag 'n drop # MANCA
