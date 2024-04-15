@@ -2,11 +2,13 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -19,26 +21,28 @@ import java.awt.event.ItemListener;
 public class FrameDisplayer extends JFrame{
 
     Immagini[] componenti_passivi = {
-        new Immagini("/home/fred/Desktop/Electronic-LAB-simulator/img/button.jpeg"),
-        new Immagini("/home/fred/Desktop/Electronic-LAB-simulator/img/button.jpeg"),
-        new Immagini("/home/fred/Desktop/Electronic-LAB-simulator/img/button.jpeg"),
-        new Immagini("/home/fred/Desktop/Electronic-LAB-simulator/img/button.jpeg"),
+        new Immagini("/Electronic-LAB-simulator/img/button.jpeg"),
+        new Immagini("/Electronic-LAB-simulator/img/button.jpeg"),
+        new Immagini("/Electronic-LAB-simulator/img/button.jpeg"),
+        new Immagini("/Electronic-LAB-simulator/img/button.jpeg"),
     };
     Immagini[] componenti_attivi = {
-        new Immagini("/home/fred/Desktop/Electronic-LAB-simulator/img/led.png"),
-        new Immagini("/home/fred/Desktop/Electronic-LAB-simulator/img/led.png"),
-        new Immagini("/home/fred/Desktop/Electronic-LAB-simulator/img/led.png"),
-        new Immagini("/home/fred/Desktop/Electronic-LAB-simulator/img/led.png"),
+        new Immagini("/Electronic-LAB-simulator/img/led.png"),
+        new Immagini("/Electronic-LAB-simulator/img/led.png"),
+        new Immagini("/Electronic-LAB-simulator/img/led.png"),
+        new Immagini("/Electronic-LAB-simulator/img/led.png"),
     };
     Immagini[] componenti_di_misura = {
-        new Immagini("/home/fred/Desktop/Electronic-LAB-simulator/img/resistor.png"),
-        new Immagini("/home/fred/Desktop/Electronic-LAB-simulator/img/resistor.png"),
-        new Immagini("/home/fred/Desktop/Electronic-LAB-simulator/img/resistor.png"),
-        new Immagini("/home/fred/Desktop/Electronic-LAB-simulator/img/resistor.png"),
+        new Immagini("/Electronic-LAB-simulator/img/resistor.png"),
+        new Immagini("/Electronic-LAB-simulator/img/resistor.png"),
+        new Immagini("/Electronic-LAB-simulator/img/resistor.png"),
+        new Immagini("/Electronic-LAB-simulator/img/resistor.png"),
     };
-
+    // screen size variables 
     double x;
     double y;
+    
+    //main pane
     private JTabbedPane tabbedPane = new JTabbedPane();
     Dimension scrDimension = Toolkit.getDefaultToolkit().getScreenSize();
     
@@ -57,8 +61,30 @@ public class FrameDisplayer extends JFrame{
     private JPanel WorkingSpace = new JPanel();
     private JPanel Panel_attivi = new JPanel();
     private JPanel Panel_Passivi = new JPanel();
-    private JPanel Panel_Misura= new JPanel();
+    private JPanel Panel_Misura = new JPanel();
 
+    //luca: settings panel, da aggiungere qualsiasi toggle 
+    //impostazione de lcazzochetipare
+    public class SettingsPanel extends JPanel{
+        private JCheckBoxMenuItem checkBox1;
+        private JCheckBoxMenuItem checkBox2;
+        private JCheckBoxMenuItem checkBox3;
+        private JCheckBoxMenuItem checkBox4;
+        
+        public SettingsPanel(){
+            setLayout(new GridLayout(1,4));
+            checkBox1 = new JCheckBoxMenuItem("Opzione 1");
+            checkBox1 = new JCheckBoxMenuItem("Opzione 2");
+            checkBox1 = new JCheckBoxMenuItem("Opzione 3");
+            checkBox1 = new JCheckBoxMenuItem("Opzione 4");
+
+            add(checkBox1);
+            add(checkBox2);
+            add(checkBox3);
+            add(checkBox4);
+
+        }
+    }
 
     
     //spawn a dialogue interface to insert the project title and adds the project to the tab panel
@@ -92,6 +118,19 @@ public class FrameDisplayer extends JFrame{
             public void actionPerformed(ActionEvent e){
                 DeleteProject();
             }
+        });
+        
+        button3.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e){
+            SettingsPanel settingsPanel = new SettingsPanel();
+            JFrame settingsFrame = new JFrame("Settings");
+
+            settingsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            settingsFrame.getContentPane().add(settingsPanel, BorderLayout.CENTER);
+            settingsFrame.pack();
+            settingsFrame.setAlwaysOnTop(true);
+            settingsFrame.setVisible(true);
+          }  
         });
 
         String[] data = {"Elementi Passivi", "Elementi Attivi", "Elementi di Misura"};
